@@ -1,0 +1,35 @@
+<div class="card my-4">
+    <h5 class="card-header">Upload JSON file</h5>
+    <div class="card-body">
+        <form enctype="multipart/form-data" action ='/upload_json' method="post" id="uploadJsonForm">
+            <div class="form-group">
+                <input type="hidden" name="username" id="username" value=<%= username %> >
+                <input type="hidden" name="story_date" id="story_date" value=<%= current_date %> >
+            </div>
+            <hr>
+            <div class = "form-inline justify-content-center text-center">
+
+                <div class="upload-image">
+
+                    <h6 class="text-center">Upload file:</h6>
+
+                    <label for="input_json">
+                        <i class = "fa fa-upload fa-2x"> </i>
+                    </label>
+                    <input required id="input_json" name="input_json" accept=".json" type="file" onchange="previewUploadFile()">
+                </div>
+                <a class="btn btn-sm text-white btn-danger pull-right" id="clear_files" style="visibility: hidden; display: none" onclick="clearUploadFile()">Clear</a>
+            </div>
+            <br>
+            <span id="uploaded_json" style="visibility: hidden;"></span>
+
+            <hr>
+
+
+            <a id="publish_post" class="btn btn-secondary text-white" onclick="uploadFile()">Upload</a>
+
+        </form>
+
+    </div>
+
+</div>

@@ -1,0 +1,45 @@
+<div class="card my-4">
+    <h5 class="card-header">Create a story...</h5>
+    <div class="card-body">
+        <form enctype="multipart/form-data" id="postStoryForm">
+            <div class="form-group">
+                <input type="hidden" name="username" id="username" value=<%= username %> >
+                <input type="hidden" name="story_date" id="story_date" value=<%= current_date %> >
+                <textarea required rows="4" type="text" class="form-control" id="story_text" name="story_text" placeholder="Write what you're thinking..."></textarea>
+            </div>
+            <hr>
+            <div class = "form-inline">
+                <div class="upload-image">
+                    <label for="input_image">
+                        <i class = "fa fa-image fa-2x"> </i>
+                    </label>
+                    <input required id="input_image" name="input_image" accept="image/*;capture=camera" type="file" multiple onchange="previewFile()">
+
+                </div>
+                <!--
+                <div class="upload-photo">
+                    <label for="capture_photo">
+                        <i class = "fa fa-camera fa-2x"> </i>
+                    </label>
+                    <input id="capture_photo" multiple type="file" name="capture_photo" accept="image/*;capture=camera">
+                </div>-->
+            </div>
+
+            <img id="uploaded_image1" src="" height="70" style="visibility: hidden;" class="img-thumbnail">
+            <img id="uploaded_image2" src="" height="70" style="visibility: hidden;" class="img-thumbnail">
+            <img id="uploaded_image3" src="" height="70" style="visibility: hidden;" class="img-thumbnail">
+
+            <br>
+            <a class="btn btn-sm text-white btn-danger pull-right" id="clear_photos" style="visibility: hidden;" onclick="clearPhotos()">Clear</a>
+
+            <hr>
+            <a id="publish_post" class="btn btn-secondary text-white" onclick="createPost(Date.now())">Publish</a>
+
+        </form>
+
+    </div>
+
+    <div id="message"></div>
+
+
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect("http://localhost:3000");
+    </script>
+    <div class="alert alert-danger text-center" id="offline_div" style="display: none">You are offline.</div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <%- include('story_post_form'); %>
+            <% if ( username === 'admin') {%>
+                <%- include('upload_form'); %>
+            <% } %>
+        </div>
+
+        <div class="col-md-8">
+
+            <h1 class="my-4">Stories</h1>
+            <hr>
+
+            <% if (page !== 'profile') { %>
+                <% if ( username === 'admin') {%>
+                    <button id="loadingButtonAdmin" class="btn btn-link" style="visibility:hidden; display:none" disabled>
+                        <span class="spinner-border text-dark"></span>
+                        Please wait while the data is being stored...
+                    </button>
+                    <br>
+                <% } %>
+                <button id="loadingButton" class="btn btn-link" style="visibility:hidden" disabled>
+                    <span class="spinner-border text-info"></span>
+                    More stories are being loaded...
+                </button>
+                <button id="refreshButton" class="btn btn-primary pull-left" style="visibility:visible;display:none" onclick="loadData()">Clear Search <i class="fa fa-refresh"></i></button>
+
+                <br>
+                <div id="searchStoriesInput" class="md-form mt-10" style="visibility: visible; display:block">
+                    <div class= 'row'>
+                        <div class="col-10">
+                            <input id="search_text" class="form-control" type="text" placeholder="Search" aria-label="Search">
+                        </div>
+                        <a id="search_stories" class="btn btn-sm btn-warning text-uppercase text-white" onclick="searchStories()"><i class = 'fa fa-search'></i> Search</a>
+                    </div >
+                </div>
+                <br>
+
+                <br>
+            <% } %>
+            <div id="viewByDateSwitch" class="custom-control custom-switch" style="visibility: visible; display:block">
+                <input type="checkbox" class="custom-control-input" id="toggleStoriesOrder">
+                <label class="custom-control-label" for="toggleStoriesOrder">View by date</label>
+            </div>
+            <br>
+            <hr>
+
+            <%- include('story_post'); %>
+        </div>
+        <hr>
+    </div>
+</div>
